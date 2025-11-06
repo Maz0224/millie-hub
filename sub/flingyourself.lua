@@ -1,8 +1,24 @@
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/master/source.lua", true))()
 
+-- variables & functions -- 
+_G.infwins = false
+_G.infstrength = false
+
+local function infwins()
+	while _G.infwins do
+		game:GetService("ReplicatedStorage").Remotes.Events.AddWinsToPlayer:FireServer(1000000000)
+	end
+end
+
+local function infstrength()
+	while _G.infstength do
+		game:GetService("ReplicatedStorage").Remotes.Events.CurrencyCollected:FireServer(10000000, "Strength")
+	end
+end
+
 local Window = Luna:CreateWindow({
 	Name = "Millie X2", -- This Is Title Of Your Window
-	Subtitle = "Universal Script", -- A Gray Subtitle next To the main title.
+	Subtitle = "Fling Yourself Script", -- A Gray Subtitle next To the main title.
 	LogoID = nil, -- The Asset ID of your logo. Set to nil if you do not have a logo for Luna to use.
 	LoadingEnabled = true, -- Whether to enable the loading animation. Set to false if you do not want the loading screen or have your own custom one.
 	LoadingTitle = "Millie • V2", -- Header for loading screen
@@ -68,38 +84,28 @@ local JumpPowerSlider = playerTab:CreateSlider({
 
 -- ROOM TAB --
 
-local roomTab = Window:CreateTab({
-	Name = "Room",
-	Icon = "room",
+local gameTab = Window:CreateTab({
+	Name = "Game",
+	Icon = "gamepad",
 	ImageSource = "Material",
 	ShowTitle = true -- This will determine whether the big header text in the tab will show
 })
 
-local Button = roomTab:CreateButton({
-	Name = "Connect!",
-	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
-    	Callback = function()
-      game:GetService("ReplicatedStorage"):WaitForChild("storage_remotes", 9e9):WaitForChild("remotes_room", 9e9):WaitForChild("room_client", 9e9):WaitForChild("RequestQueue", 9e9):FireServer()
-    	end
-})
-
-local Button = roomTab:CreateButton({
-	Name = "Disconnect!",
-	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
-    	Callback = function()
-      game:GetService("ReplicatedStorage"):WaitForChild("storage_remotes", 9e9):WaitForChild("remotes_room", 9e9):WaitForChild("room_client", 9e9):WaitForChild("RequestStop", 9e9):FireServer()
-    	end
-})
-
-local Input = roomTab:CreateInput({
-	Name = "Type in chat!",
+local Toggle = gameTab:CreateToggle({
+	Name = "Infinite Wins",
 	Description = nil,
-	PlaceholderText = "Enter Message",
-	CurrentValue = "", -- the current text
-	Numeric = false, -- When true, the user may only type numbers in the box (Example walkspeed)
-	MaxCharacters = nil, -- if a number, the textbox length cannot exceed the number
-	Enter = true, -- When true, the callback will only be executed when the user presses enter.
-    	Callback = function(Text)
-      game:GetService("ReplicatedStorage"):WaitForChild("storage_remotes", 9e9):WaitForChild("remotes_room", 9e9):WaitForChild("room_client", 9e9):WaitForChild("RequestMessage", 9e9):FireServer(Text)
+	CurrentValue = false,
+    	Callback = function(Value)
+			_G.infwins = Value
     	end
-}, "Input") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlapsgame:GetService("ReplicatedStorage"):WaitForChild("storage_remotes", 9e9):WaitForChild("remotes_room", 9e9):WaitForChild("room_client", 9e9):WaitForChild("RequestMessage", 9e9):FireServer(Text)
+}, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+local Toggle = gameTab:CreateToggle({
+	Name = "Infinite Strength",
+	Description = nil,
+	CurrentValue = false,
+    	Callback = function(Value)
+			_G.infstrength = Value
+    	end
+}, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
