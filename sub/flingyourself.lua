@@ -132,7 +132,7 @@ local Button = gameTab:CreateButton({
 	Name = "Teleport to end",
 	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
     	Callback = function()
-			tp(game.workspace.Slides["Curved Nature Slide"].RaceEnd.Root)
+			tp(game.workspace.Slides:GetChildren()[1].RaceEnd.Root)
     	end
 })
 
