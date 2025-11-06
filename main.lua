@@ -39,8 +39,8 @@ Window:CreateHomeTab({
 
 local playerTab = Window:CreateTab({
 	Name = "Player",
-	Icon = "user-cog",
-	ImageSource = "Lucide",
+	Icon = "account_circle",
+	ImageSource = "Material",
 	ShowTitle = true -- This will determine whether the big header text in the tab will show
 })
 
