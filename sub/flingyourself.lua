@@ -9,6 +9,7 @@ end
 _G.infwins = false
 _G.infst = false
 _G.inwin = false
+_G.reb = false
 
 local function infwins()
 	while _G.infwins do
@@ -20,7 +21,7 @@ end
 local function infst()
 	while _G.infst do
 		game:GetService("ReplicatedStorage").Remotes.Events.CurrencyCollected:FireServer(10000000000000000000000000000, "Strength")
-		task.wait(0.01)
+		task.wait()
 	end
 end
 
@@ -32,6 +33,13 @@ local function inwin()
 		task.wait(0.05)
 		firesignal(game:GetService("ReplicatedStorage").Remotes.Events.DisableRagdoll.OnClientEvent)
 		task.wait(0.05)
+	end
+end
+
+local function reb()
+	while _G.reb do
+		game:GetService("ReplicatedStorage".Remotes.Functions.TryRebirth:InvokeServer(game.Players.LocalPlayer)
+		task.wait()
 	end
 end
 
@@ -140,6 +148,17 @@ local Toggle = gameTab:CreateToggle({
     	end
 }, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
+local Toggle = gameTab:CreateToggle({
+	Name = "Auto Rebirth",
+	Description = nil,
+	CurrentValue = false,
+    	Callback = function(Value)
+			_G.reb = Value
+			reb()
+    	end
+}, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+	
 gameTab:CreateDivider()
 
 local Button = gameTab:CreateButton({
