@@ -93,7 +93,7 @@ local Button = roomTab:CreateButton({
 
 roomTab:CreateDivider()
 
-local Input = Tab:CreateInput({
+local Input = roomTab:CreateInput({
 	Name = "Type in chat!",
 	Description = nil,
 	PlaceholderText = "Enter Message",
