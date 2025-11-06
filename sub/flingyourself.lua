@@ -6,14 +6,14 @@ _G.infst = false
 
 local function infwins()
 	while _G.infwins do
-		game:GetService("ReplicatedStorage").Remotes.Events.AddWinsToPlayer:FireServer(1000000000)
+		game:GetService("ReplicatedStorage").Remotes.Events.AddWinsToPlayer:FireServer(1000000000000)
 		task.wait(0.01)
 	end
 end
 
 local function infst()
 	while _G.infst do
-		game:GetService("ReplicatedStorage").Remotes.Events.CurrencyCollected:FireServer(10000000, "Strength")
+		game:GetService("ReplicatedStorage").Remotes.Events.CurrencyCollected:FireServer(1000000000000, "Strength")
 		task.wait(0.01)
 	end
 end
