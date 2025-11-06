@@ -2,17 +2,17 @@ local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-S
 
 -- variables & functions -- 
 _G.infwins = false
-_G.infstrength = false
+_G.infst = false
 
-local function infwins2()
+local function infwins()
 	while _G.infwins do
 		game:GetService("ReplicatedStorage").Remotes.Events.AddWinsToPlayer:FireServer(1000000000)
 		task.wait(0.01)
 	end
 end
 
-local function infstrength2()
-	while _G.infstength do
+local function infwins()
+	while _G.infst do
 		game:GetService("ReplicatedStorage").Remotes.Events.CurrencyCollected:FireServer(10000000, "Strength")
 		task.wait(0.01)
 	end
@@ -99,7 +99,7 @@ local Toggle = gameTab:CreateToggle({
 	CurrentValue = false,
     	Callback = function(Value)
 			_G.infwins = Value
-			infwins2()
+			infwins()
     	end
 }, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
@@ -108,8 +108,8 @@ local Toggle = gameTab:CreateToggle({
 	Description = nil,
 	CurrentValue = false,
     	Callback = function(Value)
-			_G.infstrength = Value
-			infstrength2()
+			_G.infst = Value
+			infst()
     	end
 }, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
