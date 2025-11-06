@@ -8,6 +8,7 @@ end
 
 _G.infwins = false
 _G.infst = false
+_G.inwin = false
 
 local function infwins()
 	while _G.infwins do
@@ -18,8 +19,17 @@ end
 
 local function infst()
 	while _G.infst do
-		game:GetService("ReplicatedStorage").Remotes.Events.CurrencyCollected:FireServer(10000000000000000000, "Strength")
+		game:GetService("ReplicatedStorage").Remotes.Events.CurrencyCollected:FireServer(10000000000000000000000000000, "Strength")
 		task.wait(0.01)
+	end
+end
+
+local function inwin()
+	while _G.inwin do
+		game:GetService("ReplicatedStorage").Remotes.Events.LaunchPlayer:FireServer()
+		task.wait(0.05)
+		tp(game.workspace.Slides:GetChildren()[1].RaceEnd.Root)
+		task.wait(0.05)
 	end
 end
 
@@ -105,6 +115,16 @@ local Toggle = gameTab:CreateToggle({
     	Callback = function(Value)
 			_G.infwins = Value
 			infwins()
+    	end
+}, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+local Toggle = gameTab:CreateToggle({
+	Name = "Infinite Wins 2",
+	Description = nil,
+	CurrentValue = false,
+    	Callback = function(Value)
+			_G.inwin = Value
+			inwin()
     	end
 }, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
