@@ -7,12 +7,14 @@ _G.infstrength = false
 local function infwins()
 	while _G.infwins do
 		game:GetService("ReplicatedStorage").Remotes.Events.AddWinsToPlayer:FireServer(1000000000)
+		task.wait(0.01)
 	end
 end
 
 local function infstrength()
 	while _G.infstength do
 		game:GetService("ReplicatedStorage").Remotes.Events.CurrencyCollected:FireServer(10000000, "Strength")
+		task.wait(0.01)
 	end
 end
 
@@ -97,6 +99,7 @@ local Toggle = gameTab:CreateToggle({
 	CurrentValue = false,
     	Callback = function(Value)
 			_G.infwins = Value
+			infwins()
     	end
 }, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
@@ -106,6 +109,7 @@ local Toggle = gameTab:CreateToggle({
 	CurrentValue = false,
     	Callback = function(Value)
 			_G.infstrength = Value
+			infstrength()
     	end
 }, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
