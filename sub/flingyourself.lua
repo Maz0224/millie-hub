@@ -30,6 +30,8 @@ local function inwin()
 		task.wait(0.05)
 		tp(game.workspace.Slides:GetChildren()[1].RaceEnd.Root)
 		task.wait(0.05)
+		firesignal(game:GetService("ReplicatedStorage").Remotes.Events.DisableRagdoll.OnClientEvent)
+		task.wait(0.05)
 	end
 end
 
@@ -155,4 +157,3 @@ local Button = gameTab:CreateButton({
 			tp(game.workspace.Slides:GetChildren()[1].RaceEnd.Root)
     	end
 })
-
