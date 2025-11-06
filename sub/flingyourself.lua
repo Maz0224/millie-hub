@@ -27,7 +27,7 @@ end
 local function inwin()
 	while _G.inwin do
 		game:GetService("ReplicatedStorage").Remotes.Events.LaunchPlayer:FireServer()
-		task.wait(0.05)
+		task.wait(3.05)
 		tp(game.workspace.Slides:GetChildren()[1].RaceEnd.Root)
 		task.wait(0.05)
 		firesignal(game:GetService("ReplicatedStorage").Remotes.Events.DisableRagdoll.OnClientEvent)
@@ -151,9 +151,14 @@ local Button = gameTab:CreateButton({
 })
 
 local Button = gameTab:CreateButton({
-	Name = "Teleport to end",
+	Name = "Teleport To End",
 	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
     	Callback = function()
 			tp(game.workspace.Slides:GetChildren()[1].RaceEnd.Root)
     	end
 })
+
+game:GetService("ReplicatedStorage").Remotes.Functions.TryHatchEgg:InvokeServer(
+    "Dust",
+    1
+)
