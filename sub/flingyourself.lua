@@ -1,6 +1,11 @@
 local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-Softworks/Luna-Interface-Suite/refs/heads/master/source.lua", true))()
 
 -- variables & functions -- 
+
+local function tp(part)
+	game.Players.LocalPlayer.Character.HumanoidEootPart.CFrame = part.CFrame
+end
+
 _G.infwins = false
 _G.infst = false
 
@@ -112,4 +117,22 @@ local Toggle = gameTab:CreateToggle({
 			infst()
     	end
 }, "Toggle") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+
+gameTab:CreateDivider()
+
+local Button = gameTab:CreateButton({
+	Name = "Launch",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+			game:GetService("ReplicatedStorage").Remotes.Events.LaunchPlayer:FireServer()
+    	end
+})
+
+local Button = gameTab:CreateButton({
+	Name = "Teleport to end",
+	Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    	Callback = function()
+			tp(game.workspace.Slides["Curved Nature Slide"].RaceEnd.Root)
+    	end
+})
 
