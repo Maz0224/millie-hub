@@ -95,7 +95,7 @@ local gameTab = Window:CreateTab({
 
 local Toggle = gameTab:CreateToggle({
 	Name = "Infinite Wins",
-	Description = nil,
+	Description = "NW",
 	CurrentValue = false,
     	Callback = function(Value)
 			_G.infwins = Value
