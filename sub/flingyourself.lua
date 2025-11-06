@@ -38,7 +38,7 @@ end
 
 local function reb()
 	while _G.reb do
-		game:GetService("ReplicatedStorage".Remotes.Functions.TryRebirth:InvokeServer(game.Players.LocalPlayer)
+		game:GetService("ReplicatedStorage").Remotes.Functions.TryRebirth:InvokeServer(game.Players.LocalPlayer)
 		task.wait()
 	end
 end
