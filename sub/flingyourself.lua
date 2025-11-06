@@ -11,7 +11,7 @@ local function infwins()
 	end
 end
 
-local function infwins()
+local function infst()
 	while _G.infst do
 		game:GetService("ReplicatedStorage").Remotes.Events.CurrencyCollected:FireServer(10000000, "Strength")
 		task.wait(0.01)
