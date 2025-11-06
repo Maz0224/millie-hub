@@ -3,7 +3,7 @@ local Luna = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nebula-S
 -- variables & functions -- 
 
 local function tp(part)
-	game.Players.LocalPlayer.Character.HumanoidEootPart.CFrame = part.CFrame
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = part.CFrame
 end
 
 _G.infwins = false
